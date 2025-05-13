@@ -1,16 +1,11 @@
 // server-communication.service.ts
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { DataSource } from '../../source-selection/data-source-selection.service';
+import { type DataFormat, type DataSource } from '../../shared/data-source.model';
 
 interface DeviceInformation {
   UUID: string;
   color: { r: number; g: number; b: number };
-}
-
-export interface DataFormat {
-  timestamp: number;
-  value: number;
 }
 
 interface DeviceOverview {
@@ -135,6 +130,11 @@ export class OmnAIScopeDataService implements DataSource{
       this.socket = null;
       this.isConnected.set(false);
     }
+  }
+
+  clearData(): void {
+    this.disconnect();
+    this.data.set({});
   }
 
   // Server-URL ändern

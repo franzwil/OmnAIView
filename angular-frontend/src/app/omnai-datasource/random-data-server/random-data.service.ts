@@ -1,17 +1,20 @@
 import { Injectable, signal } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DataSource } from '../../source-selection/data-source-selection.service';
-import { DataFormat } from '../omnai-scope-server/live-data.service';
-
+import { DataFormat, type DataSource } from '../../shared/data-source.model';
 
 @Injectable({ providedIn: 'root' })
 export class DummyDataService implements DataSource {
     private readonly _data = signal<Record<string, DataFormat[]>>({});
-
     readonly data = this._data.asReadonly(); 
+    private subscription: Subscription | null = null;
+    private readonly MAX_DATA_POINTS = 1000;
+
     connect(): void {
-        interval(1000)
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
+        this.subscription = interval(1000)
             .pipe(
                 map(() => ({
                     timestamp: Date.now(),
@@ -21,8 +24,20 @@ export class DummyDataService implements DataSource {
             .subscribe((point) => {
                 this._data.update(current => ({
                     ...current,
-                    dummy: [...(current['dummy'] ?? []), point]
+                    dummy: [...(current['dummy'] ?? []), point].slice(-this.MAX_DATA_POINTS)
                 }));
             });
+    }
+
+    disconnect(): void {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+            this.subscription = null;
+        }
+    }
+
+    clearData(): void {
+        this.disconnect();
+        this._data.set({});
     }
 }
