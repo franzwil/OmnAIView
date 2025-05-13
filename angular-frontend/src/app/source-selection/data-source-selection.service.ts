@@ -1,39 +1,25 @@
 import { computed, inject, Injectable, Signal, signal } from '@angular/core';
-import { type DataFormat, OmnAIScopeDataService } from '../omnai-datasource/omnai-scope-server/live-data.service';
+import { OmnAIScopeDataService } from '../omnai-datasource/omnai-scope-server/live-data.service';
 import { Observable } from 'rxjs';
 import { DummyDataService } from '../omnai-datasource/random-data-server/random-data.service';
-/** Dummy interface to match your expected shape */
-export interface DataPoint {
-    x: number;
-    y: number;
-}
-
-/** Your expected DataSource interface */
-export interface DataSource {
-    connect(): unknown;
-    data: Signal<Record<string, DataFormat[]>>
-}
-
-
-export interface DataSourceInfo  extends DataSource{
-    id: string;
-    name: string;
-    description?: string;
-}
+import { type DataFormat, DataSourceInfo } from '../shared/data-source.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class DataSourceSelectionService {
     private readonly liveDataService = inject(OmnAIScopeDataService);
-    private readonly _currentSource = signal<DataSourceInfo | null>(null); private readonly dummyDataService = inject(DummyDataService);
+    private readonly dummyDataService = inject(DummyDataService);
 
+    private readonly _currentSource = signal<DataSourceInfo | null>(null);
     private readonly _availableSources = signal<DataSourceInfo[]>([
         {
             id: 'omnaiscope',
             name: 'OmnAIScope',
             description: 'Live data from connected OmnAIScope devices',
             connect: this.liveDataService.connect.bind(this.liveDataService),
+            disconnect: this.liveDataService.disconnect.bind(this.liveDataService),
+            clearData: this.liveDataService.clearData.bind(this.liveDataService),
             data: this.liveDataService.data
         },
         {
@@ -41,6 +27,8 @@ export class DataSourceSelectionService {
             name: 'Random Dummy Data',
             description: 'Random generated data points',
             connect: this.dummyDataService.connect.bind(this.dummyDataService),
+            disconnect: this.dummyDataService.disconnect.bind(this.dummyDataService),
+            clearData: this.dummyDataService.clearData.bind(this.dummyDataService),
             data: this.dummyDataService.data
         }
     ]);

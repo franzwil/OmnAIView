@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { type DataSourceInfo, DataSourceSelectionService } from './data-source-selection.service';
+import { DataSourceSelectionService } from './data-source-selection.service';
+import { type DataSourceInfo } from '../shared/data-source.model';
 
 @Component({
     selector: 'app-source-select-modal',
