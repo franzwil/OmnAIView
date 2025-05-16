@@ -10,7 +10,8 @@
     --accent-color: #ff5959; /* Badges, Labels, Hover-Effekte */
     --accent-color-light: #ff8b8b;
     --accent-color-dark: #cc4747;
-    --background-color: #000;
+    /* --background-color: #000; */
+    --background-color: #fafafa;
     --text-color: #fff;
     --h1-color: #fff;
     --h2-color: #e5e5e5;
@@ -27,7 +28,7 @@ html, body {
 }
 body {
     background-color: var(--background-color);
-    color: var(--text-color);
+    /* color: var(--text-color); */
     margin: 0; 
     /* font-family: Roboto, "Helvetica Neue", sans-serif; */
     font-family: var(--font-text), sans-serif;
@@ -58,8 +59,8 @@ button {
 }
 
 button {
-    background-color: var(--primary-color);
-    color: var(--text-color);
+    /* background-color: var(--primary-color);
+    color: var(--text-color); */
 }
 button:hover,
 button:focus {
