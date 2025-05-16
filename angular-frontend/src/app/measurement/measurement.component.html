@@ -1,6 +1,56 @@
-<button type="button" (click)="startPauseMeasurement()">
-    {{ updateStartButton() }}
-</button>
-<button type="button" (click)="deleteMeasurementData()">
-    Delete
-</button>
+<div class="button-wrapper-wrapper">
+    <div class="button-wrapper" style="display: none">
+        <button 
+            class="start-button"
+            type="button" 
+            (click)="startPauseMeasurement()">
+            <span class="material-icons-outlined">play_arrow</span>
+        </button>
+        <!-- Stop button -->
+        <button
+            class="stop-button"
+            type="button"> 
+            <span class="material-icons-outlined">stop</span>   
+        </button>
+        <!-- Save data from started or recorded measurement
+                Rename recording possible? -->
+        <button
+            class="save-data"
+            type="button">
+            <span class="material-icons-outlined">save</span>
+        </button>
+        <!-- Plan and record measurement -->
+        <button
+            class="record-data"
+            type="button"
+            >
+            <mat-icon fontIcon="radio_button_checked" />
+        </button>
+        <!-- Delete wrongly started measurement recording -->
+        <button 
+            class="delete-data"
+            type="button" 
+            (click)="deleteMeasurementData()">
+            <mat-icon fontIcon="delete_outline" />
+        </button>
+    </div>
+    <div class="button-wrapper">
+        <button class="start-button"
+            (click)="startPauseMeasurement()">
+            <mat-icon class="material-symbols-outlined" fontIcon="play_arrow" />
+        </button>
+        <button class="stop-button">
+            <mat-icon class="material-symbols-outlined" fontIcon="stop" />
+        </button>
+            <button class="stop-button">
+            <mat-icon class="material-symbols-outlined" fontIcon="save" />
+        </button>
+            <button class="stop-button">
+            <mat-icon class="material-symbols-outlined" fontIcon="radio_button_checked" />
+        </button>
+            <button class="delete-button"
+                (click)="deleteMeasurementData()">
+            <mat-icon class="material-symbols-outlined" fontIcon="delete" />
+        </button>
+    </div>
+</div>
