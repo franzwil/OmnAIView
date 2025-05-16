@@ -8,7 +8,7 @@ export class DummyDataService implements DataSource {
     private readonly _data = signal<Record<string, DataFormat[]>>({});
     readonly data = this._data.asReadonly(); 
     private subscription: Subscription | null = null;
-    private readonly MAX_DATA_POINTS = 1000;
+    private readonly MAX_DATA_POINTS = 10;
 
     connect(): void {
         if (this.subscription) {
