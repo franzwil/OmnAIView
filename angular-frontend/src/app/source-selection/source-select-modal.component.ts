@@ -18,12 +18,13 @@ export class SourceSelectModalComponent {
     readonly selected = this.datasourceService.currentSource;
 
 
-    private readonly dialogRef = inject(MatDialogRef<SourceSelectModalComponent>);
+    // private readonly dialogRef = inject(MatDialogRef<SourceSelectModalComponent>);
     select(source: DataSourceInfo) {
         this.datasourceService.selectSource(source);
     }
 
     clear() {
+        this.datasourceService.currentSource()?.disconnect();
         this.datasourceService.clearSelection();
     }
 }
