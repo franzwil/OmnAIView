@@ -1,3 +1,4 @@
+<app-measurement />
 <svg #graphContainer appResizeObserver (resize)="updateGraphDimensions($event)">
     <g [attr.transform]="marginTransform()">
 
@@ -10,7 +11,6 @@
         }
     </g>
 </svg>
-<app-measurement />
 <app-start-data-button />
 <app-device-list />
 

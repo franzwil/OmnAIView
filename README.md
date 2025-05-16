@@ -10,14 +10,14 @@ The goal of OmnAIView is to create an easy process to get the information you ne
 
 ## Why do this ?
 
-The most people dont measure something just to see numbers. They measure because they want information about the data.
+The most people don't measure something just to see numbers. They measure because they want information about the data.
 The process to get this information is hard. Often you need to know how the scientific environment behind your data works. Or need to implement your own algorithmn to analyse the data. Or worse : calculate it yourself.
 
 We want to make this better !
 
 1. OmnAIView does not only display data from our devices. OmnAIView will support different interfaces for devices, so you can display **your** data from **your** device in the software.
 2. OmnAIView will support REST API. You can connect **your** analysis to the frontend and analyse data via a button click.
-3. OmnAIView will support its own analysis. You dont know how your scientific background works or need a simple mathematical analysis -> it is only one button click away.
+3. OmnAIView will support its own analysis. You don't know how your scientific background works or need a simple mathematical analysis -> it is only one button click away.
 
 ## How to Contribute :
 
