@@ -40,4 +40,7 @@ export class DummyDataService implements DataSource {
     clearData(): void {
         this._data.set({});
     }
+    
+    save(): void {}
+    record(): void {}
 }

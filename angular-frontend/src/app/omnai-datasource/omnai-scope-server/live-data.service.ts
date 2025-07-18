@@ -173,6 +173,8 @@ export class OmnAIScopeDataService implements DataSource {
     this.data.set({});
   }
 
+  save(): void {}
+  record(): void {}
   // Typprüfung für OmnAI-Daten-Nachrichten
   private isOmnAIDataMessage(message: any): boolean {
     if (typeof message !== 'object' || message === null) return false;
