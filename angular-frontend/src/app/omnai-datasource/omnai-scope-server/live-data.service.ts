@@ -174,8 +174,16 @@ export class OmnAIScopeDataService implements DataSource {
   }
 
   save(): void {
-    console.log('Saving OmnAI data ...');
+    try {
+      const wsUrl = `ws://${this.serverUrl()}/ws`;
+      this.socket = new WebSocket(wsUrl);
+    } catch {
+      console.log('No websocket connected.')
+      return;
+    }
+
   }
+
   record(): void {
     console.log('Start recording OmnAI data ...');
   }
