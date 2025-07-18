@@ -43,8 +43,8 @@ export class DataSourceSelectionService {
             connect: this.liveDataService.connect.bind(this.liveDataService),
             disconnect: this.liveDataService.disconnect.bind(this.liveDataService),
             clearData: this.liveDataService.clearData.bind(this.liveDataService),
-            save: this.liveDataService.clearData.bind(this.liveDataService),
-            record: this.liveDataService.clearData.bind(this.liveDataService),
+            save: this.liveDataService.save.bind(this.liveDataService),
+            record: this.liveDataService.record.bind(this.liveDataService),
             data: this.liveDataService.data
         },
         {
@@ -54,8 +54,8 @@ export class DataSourceSelectionService {
             connect: this.dummyDataService.connect.bind(this.dummyDataService),
             disconnect: this.dummyDataService.disconnect.bind(this.dummyDataService),
             clearData: this.dummyDataService.clearData.bind(this.dummyDataService),
-            save: this.dummyDataService.clearData.bind(this.dummyDataService),
-            record: this.dummyDataService.clearData.bind(this.dummyDataService),
+            save: this.dummyDataService.save.bind(this.dummyDataService),
+            record: this.dummyDataService.record.bind(this.dummyDataService),
             data: this.dummyDataService.data
         },
         {
@@ -65,8 +65,8 @@ export class DataSourceSelectionService {
             connect: this.csvDataService.connect.bind(this.csvDataService),
             disconnect: this.csvDataService.disconnect.bind(this.csvDataService),
             clearData: this.csvDataService.clearData.bind(this.csvDataService),
-            save: this.csvDataService.clearData.bind(this.csvDataService),
-            record: this.csvDataService.clearData.bind(this.csvDataService),
+            save: this.csvDataService.save.bind(this.csvDataService),
+            record: this.csvDataService.record.bind(this.csvDataService),
             data: this.csvDataService.data
         }
     ]);

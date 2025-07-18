@@ -41,6 +41,10 @@ export class DummyDataService implements DataSource {
         this._data.set({});
     }
     
-    save(): void {}
-    record(): void {}
+    save(): void {
+        console.log('Saving dummy data ...');
+    }
+    record(): void {
+        console.log('Start recording dummy data ...');
+    }
 }
